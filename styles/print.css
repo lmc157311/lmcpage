@@ -1,45 +1,58 @@
-/* 打印优化样式 */
 @media print {
+    .print-button {
+        display: none;
+    }
+
     body {
         font-size: 12pt;
         line-height: 1.4;
+        margin: 1cm;
         max-width: 100%;
-        padding: 0;
     }
 
-    .contact-bar {
-        flex-wrap: nowrap;
-        justify-content: space-around;
-        padding: 0.5rem 0;
-    }
-
-    .research-card {
-        box-shadow: none;
-        border: 1px solid #ddd;
-    }
-
-    .timeline-content::before {
-        background: #000 !important;
-    }
-
-    a::after {
-        content: " (" attr(href) ")";
-        font-size: 0.8em;
-        font-weight: normal;
-    }
-    
-    /* 隐藏非必要元素 */
-    .fas:not(.fa-print) {
-        display: none;
-    }
-    
-    /* 调整边距 */
     .resume-header {
-        padding: 1rem 0;
+        border-bottom: 2pt solid var(--primary-color);
+        padding-bottom: 0.5cm;
     }
-    
-    /* 优化时间轴显示 */
-    .timeline-item {
+
+    .timeline::before {
+        width: 2pt;
+    }
+
+    .timeline-item::before {
+        width: 0.8rem;
+        height: 0.8rem;
+        left: -0.9rem;
+    }
+
+    .print-footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        font-size: 10pt;
+        color: #666;
+        text-align: center;
+        padding: 0.5cm;
+        border-top: 1pt solid #ddd;
+    }
+
+    @page {
+        margin: 2cm 1.5cm;
+        size: A4;
+        @bottom-right {
+            content: "第 " counter(page) " 页";
+            font-size: 10pt;
+            color: #666;
+        }
+    }
+
+    ul {
         page-break-inside: avoid;
+    }
+
+    .research-item {
+        page-break-inside: avoid;
+        margin-bottom: 1cm;
     }
 }
