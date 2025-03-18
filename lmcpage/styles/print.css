@@ -1,0 +1,45 @@
+/* 打印优化样式 */
+@media print {
+    body {
+        font-size: 12pt;
+        line-height: 1.4;
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .contact-bar {
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        padding: 0.5rem 0;
+    }
+
+    .research-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+
+    .timeline-content::before {
+        background: #000 !important;
+    }
+
+    a::after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+        font-weight: normal;
+    }
+    
+    /* 隐藏非必要元素 */
+    .fas:not(.fa-print) {
+        display: none;
+    }
+    
+    /* 调整边距 */
+    .resume-header {
+        padding: 1rem 0;
+    }
+    
+    /* 优化时间轴显示 */
+    .timeline-item {
+        page-break-inside: avoid;
+    }
+}
